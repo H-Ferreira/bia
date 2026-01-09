@@ -153,11 +153,10 @@ document.getElementById("formConfirmacao").addEventListener("submit", function(e
     const acompanhante = document.getElementById("acompanhante").value;
     const quantidade = document.getElementById("quantidade").value || 0;
 
-    // 🔴 URL DO GOOGLE APPS SCRIPT
-    const url = "https://script.google.com/macros/s/AKfycbxLhERCGNPn3AzQA1uJSC-CJiZYIg8CzqkzLDmGeF03-gOlbvUepHapArwCkDKK9F20/exec";
-
-    fetch(url, {
+    // 🔗 ENVIO AUTOMÁTICO PARA GOOGLE SHEETS
+    fetch("https://script.google.com/macros/s/AKfycbxLhERCGNPn3AzQA1uJSC-CJiZYIg8CzqkzLDmGeF03-gOlbvUepHapArwCkDKK9F20/exec", {
         method: "POST",
+        mode: "no-cors",
         headers: {
             "Content-Type": "application/json"
         },
@@ -168,15 +167,13 @@ document.getElementById("formConfirmacao").addEventListener("submit", function(e
         })
     });
 
-    // Mensagem WhatsApp
-    let mensagem =
-`🎉 Confirmação de Presença – 15 anos da Bia
+    // 📲 MENSAGEM SIMPLES NO WHATSAPP
+    const mensagem =
+`Olá! Confirmei a minha presença no aniversário de 15 anos da Bia. 🎉✨`;
 
-👤 Nome: ${nome}
-👥 Acompanhante: ${acompanhante === "sim" ? "Sim" : "Não"}
-➕ Quantidade: ${quantidade}`;
-
+    // 🔴 TROQUE SE NECESSÁRIO
     const numeroWhatsApp = "5591999999999";
+
     const linkWhatsApp =
         "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagem);
 
@@ -185,8 +182,6 @@ document.getElementById("formConfirmacao").addEventListener("submit", function(e
     alert("Presença confirmada com sucesso! 💖");
 });
 </script>
-
-
 
 </body>
 </html>
