@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmação de Presença</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8f5e9, #ffffff);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+    color: #2e7d32;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+input,
+select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #2e7d32;
+}
+
+button {
+    width: 100%;
+    height: 52px;
+    margin-top: 10px;
+    background: #2e7d32;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Confirmação de Presença</h1>
+
+    <form id="formConfirmacao">
+
+        <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="acompanhante">Vai levar acompanhante?</label>
+            <select id="acompanhante" required onchange="mostrarCampo()">
+                <option value="">Selecione</option>
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+        </div>
+
+        <div class="form-group hidden" id="campoQuantidade">
+            <label for="quantidade">Quantos acompanhantes?</label>
+            <input type="number" id="quantidade" min="1" max="10">
+        </div>
+
+        <button type="submit">Confirmar Presença</button>
+    </form>
+
+    <div class="footer">
+        Obrigado por confirmar sua presença 💚
+    </div>
+</div>
+
+<script>
+function mostrarCampo() {
+    const select = document.getElementById("acompanhante");
+    const campo = document.getElementById("campoQuantidade");
+    campo.classList.toggle("hidden", select.value !== "sim");
+}
+
+document.getElementById("formConfirmacao").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const acompanhante = document.getElementById("acompanhante").value;
+    const quantidade = document.getElementById("quantidade").value || 0;
+
+    let mensagem = 
+`📌 Confirmação de Presença
+
+👤 Nome: ${nome}
+👥 Acompanhante: ${acompanhante === "sim" ? "Sim" : "Não"}
+➕ Quantidade de acompanhantes: ${quantidade}`;
+
+    // 🔴 COLOQUE SEU NÚMERO AQUI (DDD + número, sem espaços)
+    const numeroWhatsApp = "5591999999999";
+
+    const linkWhatsApp = 
+        "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagem);
+
+    window.open(linkWhatsApp, "_blank");
+});
+</script>
+
+</body>
+</html>
