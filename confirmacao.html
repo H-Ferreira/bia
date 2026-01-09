@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirmação de Presença</title>
+<title>Confirmação de Presença – 15 anos da Bia</title>
 
 <style>
 * {
@@ -14,7 +14,7 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #e8f5e9, #ffffff);
+    background: #F5ECE1;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -25,16 +25,24 @@ body {
     width: 100%;
     max-width: 420px;
     background: #ffffff;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    padding: 26px;
+    border-radius: 18px;
+    border: 2px solid #AD8D50;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 h1 {
     text-align: center;
-    font-size: 22px;
-    margin-bottom: 24px;
-    color: #2e7d32;
+    font-size: 24px;
+    margin-bottom: 6px;
+    color: #997BAB;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 26px;
+    color: #555;
 }
 
 .form-group {
@@ -46,6 +54,7 @@ label {
     margin-bottom: 6px;
     font-weight: 600;
     font-size: 15px;
+    color: #333;
 }
 
 input,
@@ -55,30 +64,31 @@ select {
     padding: 0 14px;
     font-size: 16px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1.5px solid #AD8D50;
     outline: none;
+    background: #fff;
 }
 
 input:focus,
 select:focus {
-    border-color: #2e7d32;
+    border-color: #997BAB;
 }
 
 button {
     width: 100%;
-    height: 52px;
-    margin-top: 10px;
-    background: #2e7d32;
+    height: 54px;
+    margin-top: 12px;
+    background: #997BAB;
     color: white;
     font-size: 18px;
     font-weight: bold;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 .hidden {
@@ -87,7 +97,7 @@ button:active {
 
 .footer {
     text-align: center;
-    margin-top: 16px;
+    margin-top: 18px;
     font-size: 13px;
     color: #666;
 }
@@ -97,13 +107,14 @@ button:active {
 <body>
 
 <div class="container">
-    <h1>Confirmação de Presença</h1>
+    <h1>15 anos da Bia ✨</h1>
+    <div class="subtitle">Confirme sua presença</div>
 
     <form id="formConfirmacao">
 
         <div class="form-group">
             <label for="nome">Seu nome</label>
-            <input type="text" id="nome" placeholder="Digite seu nome" required>
+            <input type="text" id="nome" placeholder="Digite seu nome completo" required>
         </div>
 
         <div class="form-group">
@@ -124,7 +135,7 @@ button:active {
     </form>
 
     <div class="footer">
-        Obrigado por confirmar sua presença 💚
+        Será uma alegria celebrar esse momento com você 💖
     </div>
 </div>
 
@@ -142,17 +153,17 @@ document.getElementById("formConfirmacao").addEventListener("submit", function(e
     const acompanhante = document.getElementById("acompanhante").value;
     const quantidade = document.getElementById("quantidade").value || 0;
 
-    let mensagem = 
-`📌 Confirmação de Presença
+    let mensagem =
+`🎉 Confirmação de Presença – 15 anos da Bia
 
 👤 Nome: ${nome}
-👥 Acompanhante: ${acompanhante === "sim" ? "Sim" : "Não"}
+👥 Vai levar acompanhante? ${acompanhante === "sim" ? "Sim" : "Não"}
 ➕ Quantidade de acompanhantes: ${quantidade}`;
 
-    // 🔴 COLOQUE SEU NÚMERO AQUI (DDD + número, sem espaços)
+    // 🔴 COLOQUE O NÚMERO DO WHATSAPP AQUI (DDD + número, sem espaços)
     const numeroWhatsApp = "5591999999999";
 
-    const linkWhatsApp = 
+    const linkWhatsApp =
         "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagem);
 
     window.open(linkWhatsApp, "_blank");
